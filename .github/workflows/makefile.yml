@@ -29,4 +29,12 @@ jobs:
     - name: Build CDROM Image
       run: make build-cdrom-image
 
-     
+    - name: Locate basekernel.iso
+      run: |
+        find . -name "basekernel.iso" -exec echo Found {} \;
+
+    - name: Upload basekernel.iso as an artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: basekernel.iso
+        path: basekernel.iso
